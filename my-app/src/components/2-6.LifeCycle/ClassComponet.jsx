@@ -12,6 +12,7 @@ export default class ClassComponet extends Component {
   componentDidMount() {
     console.log('componentDidMount');
     this.timberID = setInterval(() => this.tick(), 1000);
+
   }
 
   componentDidUpdate() {
@@ -20,8 +21,9 @@ export default class ClassComponet extends Component {
 
   componentWillUnmount() {
     console.log('componentWillUnmount');
-    clearInterval(timberID);
+    clearInterval(this.timberID);
   }
+
 
   tick() {
     this.setState({
@@ -29,12 +31,16 @@ export default class ClassComponet extends Component {
     })
   }
 
+  handleClick() {
+    console.log('click');
+  }
+
   render() {
     console.log('render');
     return (
       <div>
         <h1>Class Component</h1>
-        <h2>{{ this.state.date.toLocaleTimeString }</h2>
+        <h2>{this.state.date.toLocaleTimeString}</h2>
         <button onClick={this.handleClick}>Click</button>
       </div>
     )
