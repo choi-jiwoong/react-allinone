@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function List() {
-  
+
   const todos = [
     { id: 1, text: '리액트 공부하기', checked: true },
     { id: 2, text: '컴포넌트 스타일링 해보기', checked: true },
@@ -10,13 +10,18 @@ export default function List() {
 
   const Item = (props) => {
     return <li>
-          {props.id}. {props.text}
-          {props.checked ? <b>[V]</b> : <b>[ ]</b>}
-        </li>
+      <input type="checkbox" defaultChecked={props.checked} />
+      {props.id}. {props.text}
+      {props.checked ? <b>[V]</b> : <b>[ ]</b>}
+    </li>
   }
-  
+
   const todoList = todos.map((todo) => <Item key={todo.id} id={todo.id} text={todo.text} checked={todo.checked} />)
 
-  return <>{todoList}</>;
+  return <>
+    <form>
+      {todoList}
+    </form>
+  </>;
 
 }
