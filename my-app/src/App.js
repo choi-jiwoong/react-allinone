@@ -1,11 +1,13 @@
 import './App.css';
-import Memo from './components/3-8.Memoization/Memo';
+import Example from './components/3-10.Context/Example';
+import Example2 from './components/3-10.Context/function/Example';
 
 function App() {
   return (
     <div className="App">
       <h1>React</h1>
-      <Memo /><br /> 
+      <Example /><br /> 
+      <Example2 /><br /> 
     </div>
   );
 }
