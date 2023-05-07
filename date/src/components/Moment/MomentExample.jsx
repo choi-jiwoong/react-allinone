@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import moment from 'moment-timezone';
 import 'moment/locale/ko';
 
@@ -6,11 +6,11 @@ export default function MomentExample() {
 
   const momentDate = moment();
   const newMomentDate = momentDate.add(1, 'week');
-  const clonedMomentDate = momentDate.clone().add(1, 'week');
+  const clonedMomentDate = newMomentDate.clone().add(1, 'week');
 
-  const birthDayRef = React.useRef(null);
-  const startDayRef = React.useRef(null);
-  const endDayRef = React.useRef(null);
+  const birthDayRef = useRef(null);
+  const startDayRef = useRef(null);
+  const endDayRef = useRef(null);
   const [difference, setDifference] = useState(0);
 
   const [day, setDay] = useState(0);
@@ -29,12 +29,12 @@ export default function MomentExample() {
 
   return (
     <div>
-      <h1>MomentExample</h1>
+      <h1>Moment Example</h1>
       <div>Immutable Check</div>
       <div>momentDate: {momentDate.format('YYYY-MM-DD')}</div>
       <div>newMomentDate: {newMomentDate.format('YYYY-MM-DD')}</div>
       <div>clonedMomentDate: {clonedMomentDate.format('YYYY-MM-DD')}</div>
-      <div>Summer time (New-york}</div>
+      <div>Summer time (New-york)</div>
       <div>momentDate timezone: {moment.tz("2018-03-10 13:10:20", "America/New_York").add(1, "day").format('YYYY-MM-DD HH:mm:ss')}</div>
       <div>momentDate timezone: {moment.tz("2018-03-10 13:10:20", "America/New_York").add(24, "hour").format('YYYY-MM-DD HH:mm:ss')}</div>
       <div>Leap Year </div>
@@ -51,8 +51,8 @@ export default function MomentExample() {
       <div>
         <input type="date" ref={startDayRef} />
         <input type="date" ref={endDayRef} onChange={handleDifferenceChange} />
-        <div>momentDate: {difference}</div>
+        <div>difference: {difference}</div>
       </div>
     </div>
-  )
+  );
 }
