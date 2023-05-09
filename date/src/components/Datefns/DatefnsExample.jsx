@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { add, sub, differenceInDays } from 'date-fns'
-import { toDate, utcToZonedTime, format } from 'date-fns-tz'
+import { toDate, formatInTimeZone, utcToZonedTime, format } from 'date-fns-tz'
 import { ko } from 'date-fns/locale';
 
 export default function DatefnsExample() {
@@ -33,6 +33,8 @@ export default function DatefnsExample() {
       <div>momentDate: {format(dateFnsDate, 'yyyy-MM-dd')}</div>
       <div>newMomentDate: {format(newDateFnsjsDate, 'yyyy-MM-dd')}</div>
       <div>clonedMomentDate: {format(clonedayjstDate, 'yyyy-MM-dd')}</div>
+
+      <div>momentDate timezone: {formatInTimeZone(new Date("2018-03-10 13:10:20"), 'America/New_York', 'yyyy-MM-dd HH:mm:ssXXX')}</div>
       <div>momentDate timezone: {format(add(new Date("2018-03-10 13:10:20"), { days: 1 }), 'yyyy-MM-dd HH:mm:ss:xxx', { timeZone: "America/New_York" })}</div>
       <div>momentDate timezone: {format(add(new Date("2018-03-10 13:10:20"), { hours: 24 }), 'yyyy-MM-dd HH:mm:ss:xxx', { timeZone: "America/New_York" })}</div>
       <div>Leap Year </div>
