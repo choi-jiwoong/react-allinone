@@ -85,7 +85,12 @@ const redTheme = {
 
 const GlobalStyle = createGlobalStyle`
   button {
-    color: "pink"
+    color: blue;
+  } 
+
+  button:hover {
+    color: red;
+  }
 `;
 
 
