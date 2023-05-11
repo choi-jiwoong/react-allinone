@@ -1,5 +1,5 @@
 import './App.css';
-import StyledComponentsExample from './components/StyledComponentsExample/StyledComponentsExample';
+import StyledComponentsExample from './components/StyledComponentsExample';
 import StyledComponentsExample2 from './components/StyledComponentsExample/StyledComponentsExample2';
 
 function App() {
