@@ -1,11 +1,13 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, incrementByAmount } from './counterSlice'
+import { decrement, increment, incrementByAmount, fatchIncrement } from './counterSlice'
 //import styles from './Counter.module.css'
 
 export default function Counter() {
   const count = useSelector((state) => state.counter.value)
   const dispatch = useDispatch()
+
+
 
   return (
     <div>
@@ -16,6 +18,9 @@ export default function Counter() {
         >
           Increment
         </button>
+        <button
+          aria-label="Fatch Increment value"
+          onClick={() => dispatch(fatchIncrement(count))}>Fatch Increment</button>
         <span>{count}</span>
         <button
           aria-label="Decrement value"
@@ -24,7 +29,7 @@ export default function Counter() {
           Decrement
         </button>
 
-        
+
         <button onClick={() => dispatch(incrementByAmount(5))}>+5
         </button>
       </div>

@@ -1,4 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from 'axios'
+
+export const fatchIncrement = createAsyncThunk(
+  'counter/fatchIncrement',
+  async (value) => {
+    const response = await axios.put('/counter/fatchIncrement', { value: value })
+    return response.data
+  }
+)
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -18,8 +27,13 @@ export const counterSlice = createSlice({
     },
     incrementByAmount: (state, action) => {
       state.value += action.payload
-    },
+    }, 
   },
+  extraReducers: {
+    [fatchIncrement.fulfilled]: (state, action) => {
+      state.value += action.payload.value
+    }
+  }
 })
 
 // Action creators are generated for each case reducer function

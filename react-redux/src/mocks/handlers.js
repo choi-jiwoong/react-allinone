@@ -1,6 +1,15 @@
 import { rest } from 'msw'
 
 export const handlers = [
+
+  rest.put('/counter/fatchIncrement', (req, res, ctx) => {
+    const { value } = req.body
+    return res(
+      ctx.json({ value: value + 1 })
+    )
+  }),
+
+
   rest.post('/login', (req, res, ctx) => {
     const { username } = req.body
 
@@ -12,35 +21,6 @@ export const handlers = [
         lastName: 'Maverick',
       })
     )
-  }),
-  rest.get('https://raw.githubusercontent.com/techoi/raw-data-api/main/simple-api.json', async (req, res, ctx) => {
-
-    const error = req.url.searchParams.get('error')
-    if (error === 'true') {
-      return res(
-        ctx.status(500),
-        ctx.json({
-          message: 'Internal server error',
-        })
-      )
-    }
-    const originalResponse = await ctx.fetch(req)
-    const originalResponseData = await originalResponse.json()
-      
-    return res(
-      ctx.json({
-        "data": {
-          "people" :
-          [
-            ...originalResponseData.data.people,
-            {
-              "name": "jiwoong",
-              "age": 49
-            }
-          ]
-        }
-      }
-    ))
   }),
 ]
 
