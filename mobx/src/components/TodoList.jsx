@@ -22,6 +22,11 @@ const TodoList = observer(({ store }) => {
       store.pendingRequests--;
     }), 2000);
   }
+
+
+  const fetchTodo = () => {
+    store.fetchData();
+  }
   return (
     <div>
       {store.report}
@@ -36,6 +41,7 @@ const TodoList = observer(({ store }) => {
 
       <button onClick={onRun}>Run</button>
       <button onClick={onloadData}>Load Data</button>
+      <button onClick={fetchTodo}>fetchData</button>
     </div>
   );
 })

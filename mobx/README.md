@@ -11,6 +11,7 @@
 - npx msw init public/ --save
 - npm install --save mobx
 - npm install mobx-react
+- npm install axios
 
 # init
 

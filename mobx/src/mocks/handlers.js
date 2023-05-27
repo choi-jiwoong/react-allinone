@@ -1,7 +1,22 @@
 import { rest } from "msw";
 
 export const handlers = [
-  // sample api
+  rest.get("/todo", (req, res, ctx) => {
+    return res(
+      ctx.json({
+        todo: {
+          task: "sample task",
+        }
+      })
+    );
+  }),
+  rest.put('/counter/fatchIncrement', (req, res, ctx) => {
+    const { value } = req.body
+    return res(
+      ctx.json({ value: value + 1 })
+    )
+  }),
+
   rest.post("/login", (req, res, ctx) => {
     const { username } = req.body;
     return res(
