@@ -1,3 +1,11 @@
+# build
+
+```shell
+$ npx create-react-app my-app
+$ cd my-app
+$ npm start
+```
+
 # Install
 
 ## create app
@@ -9,8 +17,7 @@
 
 - npm install msw --save-dev
 - npx msw init public/ --save
-- npm install --save mobx
-- npm install mobx-react
+- npm install recoil
 - npm install axios
 
 # init
