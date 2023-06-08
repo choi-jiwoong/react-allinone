@@ -10,6 +10,26 @@ export const handlers = [
       })
     );
   }),
+
+  rest.get("/users/:userId", (req, res, ctx) => {
+
+    const { userId } = req.params
+
+    if (userId != '1') {
+      return res(
+        ctx.json({
+          name: `${userId}'s name`,
+          age: 20,
+          address: 'address',
+          phone: 'phone'
+        }));
+
+    }
+
+    return res(ctx.status(400)
+    );
+  }),
+
   rest.put('/counter/fatchIncrement', (req, res, ctx) => {
     const { value } = req.body
     return res(
