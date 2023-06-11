@@ -4,10 +4,10 @@ import axios from 'axios'
 import { ErrorBoundary } from './ErrorBoundary';
 
 
-// const currentUserIDState = atom({
-//   key: 'CurrentUserID',
-//   default: 2,
-// });
+const currentUserIDState = atom({
+  key: 'CurrentUserID',
+  default: 2,
+});
 
 // const tableOfUsers = [{ id: 1, name: "John" }, { id: 2, name: "Jane" }]
 
@@ -18,30 +18,31 @@ import { ErrorBoundary } from './ErrorBoundary';
 //   },
 // });
 
-// const currentUserNameQuery = selector({
-//   key: 'CurrentUserName',
-//   get: async ({ get }) => {
-//     const response = await axios.get(`/users/${get(currentUserIDState)}`);
-
-//     if (response.error) {
-//       console.log(response.error);
-//     }
-
-//     return response.data.name;
-//   },
-// });
-
-
-const currentUserNameQuery = selectorFamily({
+const currentUserNameQuery = selector({
   key: 'CurrentUserName',
-  get: (id) => async () => {
-    const response = await axios.get(`/users/${id}`);
+  get: async ({ get }) => {
+    const response = await axios.get(`/users/${get(currentUserIDState)}`);
+
     if (response.error) {
       console.log(response.error);
     }
+
     return response.data.name;
-  }
-})
+  },
+  cachePolicy_UNSTABLE: { eviction: 'most-recent' },
+});
+
+
+// const currentUserNameQuery = selectorFamily({
+//   key: 'CurrentUserName',
+//   get: (id) => async () => {
+//     const response = await axios.get(`/users/${id}`);
+//     if (response.error) {
+//       console.log(response.error);
+//     }
+//     return response.data.name;
+//   }
+// })
 
 
 function CurrentUser() {
