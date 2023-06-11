@@ -7,3 +7,5 @@ npm install msw --save-dev
 npx msw init public/ --save
 
 npm install recoil
+
+npm install zustand
