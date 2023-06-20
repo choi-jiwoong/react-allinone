@@ -1,4 +1,3 @@
-import { observable } from 'mobx';
 import './App.css';
 import ModxExample from './components/ModxExample';
 import TodoList from './components/TodoList';
