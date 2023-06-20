@@ -5,24 +5,11 @@
 - npm install msw --save-dev
 - npx msw init public/ --save
 - npm install axios
-- npm install sw
+- npm install swr
 
 # init
 
 ## Setting file
-
-- vi src/app/store.js
-
-```js
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/counterSlice";
-
-export default configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
-```
 
 - vi src/mocks/browser.js
 

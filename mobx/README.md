@@ -17,19 +17,6 @@
 
 ## Setting file
 
-- vi src/app/store.js
-
-```js
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/counterSlice";
-
-export default configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
-```
-
 - vi src/mocks/browser.js
 
 ```js
