@@ -24,6 +24,36 @@ const todos = [
 ];
 
 export const handlers = [
+  rest.get("/api/projects", async (req, res, ctx) => {
+
+    const pageIndex = req.url.searchParams.get('page');
+    return res(
+      ctx.json({
+        projects: [
+          {
+            id: 1,
+            name: `name 1 ${pageIndex}`,
+          },
+          {
+            id: 2,
+            name: `name 2 ${pageIndex}`,
+          },
+          {
+            id: 3,
+            name: `name 3 ${pageIndex}`,
+          },
+          {
+            id: 4,
+            name: `name 4 ${pageIndex}`,
+          }
+        ],
+        hasMore: pageIndex < 4,
+        nextCursor: pageIndex < 4 ? parseInt(pageIndex) + 1 : null,
+
+      })
+    );
+  }),
+
   rest.get("/api/todos", (req, res, ctx) => {
 
     return res(ctx.json(todos));    
